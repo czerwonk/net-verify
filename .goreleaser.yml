@@ -1,0 +1,16 @@
+dist: artifacts
+before:
+  hooks:
+    - go mod download
+builds:
+  - env:
+      - CGO_ENABLED=0
+    dir: cmd/net-verify
+    goos:
+      - linux
+    goarch:
+      - amd64
+      - arm
+      - arm64
+    ldflags: -s -w -X main.version={{.Version}}
+    binary: net-verify

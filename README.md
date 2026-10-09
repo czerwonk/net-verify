@@ -1,6 +1,4 @@
 # net-verify
-[![Build Status](https://travis-ci.org/czerwonk/net-verify.svg?branch=master)](https://travis-ci.org/czerwonk/net-verify)
-[![Go Report Card](https://goreportcard.com/badge/github.com/czerwonk/net-verify)](https://goreportcard.com/report/github.com/czerwonk/net-verify)
 
 Simple network verification tool
 

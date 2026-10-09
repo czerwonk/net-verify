@@ -5,7 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"io/ioutil"
+
 	"net"
 	"os"
 )
@@ -21,7 +21,7 @@ type IfaceDefinition struct {
 	Addresses []string `json:"addresses"`
 }
 
-const version = "0.1"
+const version = "0.1.1"
 
 func main() {
 	filePath := flag.String("file", "net-definition.json", "JSON file containing the expected network definition")
@@ -62,7 +62,7 @@ func run(file string) error {
 }
 
 func loadDefinition(reader io.Reader) (*NetDefinition, error) {
-	b, err := ioutil.ReadAll(reader)
+	b, err := io.ReadAll(reader)
 	if err != nil {
 		return nil, fmt.Errorf("could not read definition. %v", err)
 	}
@@ -108,7 +108,7 @@ func verifyInterface(iface *IfaceDefinition) error {
 }
 
 func hasIP(expected string, addrs []net.Addr) bool {
-	for i := 0; i < len(addrs); i++ {
+	for i := range addrs {
 		if addrs[i].String() == expected {
 			return true
 		}
