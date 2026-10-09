@@ -7,6 +7,7 @@ import (
 	"io"
 	"net"
 	"os"
+	"path/filepath"
 )
 
 // NetDefinition defines expectataions for network configuration
@@ -45,8 +46,9 @@ func printVersion() {
 	fmt.Println("Author(s): Daniel Czerwonk")
 }
 
-func run(file string) error {
-	f, err := os.Open(file)
+func run(path string) error {
+	path = filepath.Clean(path)
+	f, err := os.Open(path)
 	if err != nil {
 		return fmt.Errorf("could not open file. %v", err)
 	}
