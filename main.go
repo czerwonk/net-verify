@@ -5,7 +5,6 @@ import (
 	"flag"
 	"fmt"
 	"io"
-
 	"net"
 	"os"
 )
@@ -51,7 +50,9 @@ func run(file string) error {
 	if err != nil {
 		return fmt.Errorf("could not open file. %v", err)
 	}
-	defer f.Close()
+	defer func() {
+		_ = f.Close()
+	}()
 
 	d, err := loadDefinition(f)
 	if err != nil {
