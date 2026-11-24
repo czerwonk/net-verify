@@ -1,3 +1,3 @@
 module github.com/czerwonk/net-verify
 
-go 1.26.9
+go 1.27.4
